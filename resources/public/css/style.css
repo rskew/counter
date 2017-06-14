@@ -1,0 +1,53 @@
+.bignum {
+    width: 80vw;
+    height: 80vh;
+    font-size: 80vh;
+}
+
+.buttons-row1 {
+    display: table-row;
+}
+
+.buttons-row2 {
+    display: table-row;
+}
+
+/*
+.inc-border {
+    height: 5vh;
+    width: 5vw;
+    background-color: rgba(100,200,100,1);
+    margin: 10px;
+    display: table-cell;
+}
+*/
+
+.inc {
+    position: relative;
+    top: 0.5vh;
+    left: 0.5vw;
+    height: 4vh;
+    width: 4vw;
+    /*
+    margin: 5px;
+    */
+    display: table-cell;
+    border: 5px solid rgba(100,200,100,1);
+    background-color: white;
+    font-size: 3vh;
+    cursor: pointer;
+}
+
+.reset {
+    position: relative;
+    top: 5vh;
+    left: 0vw;
+    height: 4vh;
+    width: 10vw;
+    text-justify: centre;
+    /*
+    background-color: rgba(255,0,0,0.2);
+    */
+    font-size: 3vh;
+    cursor: pointer;
+}
