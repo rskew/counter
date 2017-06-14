@@ -2,7 +2,7 @@
 
 press space to count.
 
-Check it out at rowanskewes.com/counter
+Check it out at www.rowanskewes.com/counter
 
 ## License
 
