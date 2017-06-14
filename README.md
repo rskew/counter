@@ -1,6 +1,8 @@
 # counter
 
-press space to count
+press space to count.
+
+Check it out at rowanskewes.com/counter
 
 ## License
 

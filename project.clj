@@ -21,15 +21,15 @@
                                    :output-to "resources/public/js/counter.js"
                                    :output-dir "resources/public/js/out"
                                    :source-map true
+                                   :optimizations :none
                                    } }
-                       { :id "min" 
+                       #_{ :id "min" 
                         :source-paths ["src"]
                         :compiler { :main "counter.core"
                                    :output-to "resources/public/js/counter.js"
                                    :output-dir "resources/public/js/min"
                                    :optimizations :advanced
-                                   :pretty-print false } }
-                       ]}
+                                   :pretty-print false } }]}
   :figwheel {
              :http-server-root "public" ;; this will be in resources/
              ;:server-port 5309          ;; default is 3449

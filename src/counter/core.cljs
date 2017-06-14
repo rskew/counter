@@ -3,6 +3,18 @@
               [dommy.core :as dommy :refer [sel1 sel append! create-element set-class! set-attr! set-style!]]))
 
 
+(defn buttons-look-off [buttons]
+  (doall (map
+           #(set-style! %
+                        :border "5px solid rgba(100,200,100,0.2)")
+           buttons)))
+
+
+(defn button-look-on [button]
+  (set-style! button
+              :border "5px solid rgba(100,200,100,1)"))
+
+
 (defn main []
   (let [bignum (create-element :div)
         counter (atom 0)
@@ -42,14 +54,8 @@
     (append! (sel1 :body) reset)
     (dom/setTextContent reset "Reset")  
 
-
-    (let [inc-buttons (sel :.inc)]
-      (doall (map
-               #(set-style! %
-                            :border "5px solid rgba(100,200,100,0.2)")
-               inc-buttons))
-      (set-style! inc1
-                  :border "5px solid rgba(100,200,100,1)"))
+    (buttons-look-off (sel :.inc))
+    (button-look-on inc1)
 
     (add-watch counter
                :update-bignum
@@ -61,52 +67,33 @@
                        (fn [event]
                            (when (= (str (.-keyCode event))
                                     "32")
+                             ;; stop spacebar from scrolling down
                              (.preventDefault event)
                              (swap! counter #(+ % @increment)))))
     (.addEventListener inc1
                        "mousedown"
                        (fn [event]
-                           (let [inc-buttons (sel :.inc)]
-                             (doall (map
-                                      #(set-style! %
-                                                   :border "5px solid rgba(100,200,100,0.2)")
-                                      inc-buttons))
-                             (set-style! inc1
-                                         :border "5px solid rgba(100,200,100,1)")
-                             (reset! increment 1))))
+                           (buttons-look-off (sel :.inc))
+                           (button-look-on inc1)
+                           (reset! increment 1)))
     (.addEventListener dec1
                        "mousedown"
                        (fn [event]
-                           (let [inc-buttons (sel :.inc)]
-                             (doall (map
-                                      #(set-style! %
-                                                   :border "5px solid rgba(100,200,100,0.2)")
-                                      inc-buttons))
-                             (set-style! dec1
-                                         :border "5px solid rgba(100,200,100,1)")
-                             (reset! increment -1))))
+                           (buttons-look-off (sel :.inc))
+                           (button-look-on dec1)
+                           (reset! increment -1)))
     (.addEventListener inc10
                        "mousedown"
                        (fn [event]
-                           (let [inc-buttons (sel :.inc)]
-                             (doall (map
-                                      #(set-style! %
-                                                   :border "5px solid rgba(100,200,100,0.2)")
-                                      inc-buttons))
-                             (set-style! inc10
-                                         :border "5px solid rgba(100,200,100,1)")     
-                             (reset! increment 10))))  
+                           (buttons-look-off (sel :.inc))
+                           (button-look-on inc10)
+                           (reset! increment 10)))
     (.addEventListener dec10
                        "mousedown"
                        (fn [event]
-                           (let [inc-buttons (sel :.inc)]
-                             (doall (map
-                                      #(set-style! %
-                                                   :border "5px solid rgba(100,200,100,0.2)")
-                                      inc-buttons))
-                             (set-style! dec10
-                                         :border "5px solid rgba(100,200,100,1)")
-                             (reset! increment -10))))
+                           (buttons-look-off (sel :.inc))
+                           (button-look-on dec10)
+                           (reset! increment -10)))
     (.addEventListener reset
                        "mousedown"
                        (fn [event]
