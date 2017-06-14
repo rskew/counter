@@ -1,6 +1,6 @@
 # counter
 
-press space to count
+press space to count.
 
 Check it out at www.rowanskewes.com/counter
 
