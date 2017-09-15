@@ -22,8 +22,10 @@
         buttons-row2 (create-element :div)
         inc1 (create-element :div)
         inc10 (create-element :div)
+        inc50 (create-element :div)
         dec1 (create-element :div)
         dec10 (create-element :div)
+        dec50 (create-element :div)
         increment (atom 1)
         reset (create-element :div)]
     (set-class! bignum "bignum")
@@ -49,6 +51,14 @@
     (set-class! dec10 "inc")
     (append! buttons-row2 dec10)
     (dom/setTextContent dec10 "-10")  
+
+    (set-class! inc50 "inc")
+    (append! buttons-row1 inc50)
+    (dom/setTextContent inc50 "+50")  
+
+    (set-class! dec50 "inc")
+    (append! buttons-row2 dec50)
+    (dom/setTextContent dec50 "-50")  
 
     (set-class! reset "reset")
     (append! (sel1 :body) reset)
@@ -94,6 +104,18 @@
                            (buttons-look-off (sel :.inc))
                            (button-look-on dec10)
                            (reset! increment -10)))
+    (.addEventListener inc50
+                       "mousedown"
+                       (fn [event]
+                           (buttons-look-off (sel :.inc))
+                           (button-look-on inc50)
+                           (reset! increment 50)))
+    (.addEventListener dec50
+                       "mousedown"
+                       (fn [event]
+                           (buttons-look-off (sel :.inc))
+                           (button-look-on dec50)
+                           (reset! increment -50)))
     (.addEventListener reset
                        "mousedown"
                        (fn [event]
