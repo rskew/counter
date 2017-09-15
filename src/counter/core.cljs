@@ -40,6 +40,7 @@
     (append! buttons-row1 inc1)
     (dom/setTextContent inc1 "+1")  
 
+    ; do this with function or macro?
     (set-class! dec1 "inc")
     (append! buttons-row2 dec1)
     (dom/setTextContent dec1 "-1")  
